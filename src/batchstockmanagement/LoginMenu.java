@@ -5,7 +5,10 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -16,9 +19,9 @@ import javafx.scene.text.Text;
  */
 public class LoginMenu extends Menu 
 {
-    private Login loginChecker;
+    private final Login loginChecker;
     private TextField usernameInput;
-    private TextField passwordInput;
+    private PasswordField passwordInput;
     private Button loginSubmit;
     private Text loginFailure;
     
@@ -43,7 +46,7 @@ public class LoginMenu extends Menu
         //Password
         Label passwordLabel = new Label("Password: ");
         getPane().add(passwordLabel, 0, 2);
-        passwordInput = new TextField();
+        passwordInput = new PasswordField();
         getPane().add(passwordInput, 1, 2);
         
         //Submit Box
@@ -74,14 +77,25 @@ public class LoginMenu extends Menu
                     loginFailure.setFill(Color.FIREBRICK);
                     loginFailure.setText("Please fill in username and password.");
                 }
-                
-                
             }
         });
         HBox btnBox = new HBox(10);
         btnBox.getChildren().add(loginSubmit);
         btnBox.setAlignment(Pos.CENTER_RIGHT);
         getPane().add(btnBox, 0, 3, 2, 1);
+        
+        //Allows Enter to submit the form.
+        getPane().setOnKeyPressed(new EventHandler<KeyEvent>() 
+        {
+            @Override
+            public void handle(KeyEvent keyEvent) 
+            {
+                if(keyEvent.getCode() == KeyCode.ENTER)
+                {
+                    loginSubmit.fire();
+                }
+            }
+        });
         
         //Login Falure Text.
         loginFailure = new Text();
@@ -101,4 +115,5 @@ public class LoginMenu extends Menu
     {
         
     }
+    
 }
