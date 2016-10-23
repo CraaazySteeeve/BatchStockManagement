@@ -49,7 +49,7 @@ public class LoginMenu extends Menu
         passwordInput = new PasswordField();
         getPane().add(passwordInput, 1, 2);
         
-        //Submit Box
+        //Submit Button
         loginSubmit = new Button("Login");
         loginSubmit.setOnAction(new EventHandler<ActionEvent>() 
         {
@@ -75,7 +75,7 @@ public class LoginMenu extends Menu
                 {
                     //No input entered.
                     loginFailure.setFill(Color.FIREBRICK);
-                    loginFailure.setText("Please fill in username and password.");
+                    loginFailure.setText("Please enter details.");
                 }
             }
         });
