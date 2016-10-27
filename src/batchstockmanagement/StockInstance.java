@@ -12,9 +12,9 @@ public abstract class StockInstance extends StockItem
     //Something to handle the dates.
     private String addedDate;
     private String expiryDate;
-    public StockInstance(String stockID, String name, String unit, int quantity, String addedDate, String expiryDate, String location)
+    public StockInstance(String stockID, String name, String unit, String stockType, int quantity, String addedDate, String expiryDate, String location)
     {
-        super(stockID, name, unit);
+        super(stockID, name, unit, stockType);
         this.quantity = quantity;
         this.addedDate = addedDate;
         this.expiryDate = expiryDate;
@@ -23,7 +23,7 @@ public abstract class StockInstance extends StockItem
     
     public StockInstance(StockItem originItem, int quantity, String addedDate, String expiryDate, String location)
     {
-        super(originItem.getStockID(), originItem.getName(), originItem.getUnit());
+        super(originItem.getStockID(), originItem.getName(), originItem.getUnit(), originItem.getStockType());
         this.quantity = quantity;
         this.addedDate = addedDate;
         this.expiryDate = expiryDate;
