@@ -34,7 +34,7 @@ public class LoginMenu extends Menu
     @Override
     public void initMenu()
     {
-        Text heading = new Text("Login Menu");
+        Text heading = new Text("Login");
         getPane().add(heading, 0, 0, 2, 1);
         
         //Username
@@ -108,12 +108,13 @@ public class LoginMenu extends Menu
         usernameInput.setText("");
         passwordInput.setText("");
         loginFailure.setText("");
+        hideLogoutArea();
     }
     
     @Override
     public void onMenuExit()
     {
-        
+        showLogoutArea();
     }
     
 }
