@@ -19,12 +19,14 @@ public class MenuManager extends Application
     protected Menu loginMenu = new LoginMenu(this);
     protected Menu mainMenu = new MainMenu(this);
     
+    
     @Override
     public void start(Stage primaryStage) 
     {
         thestage=primaryStage;
         primaryStage.setTitle("Batch and Stock Management");
         curMenu = loginMenu;
+        curMenu.onMenuEntry();
         primaryStage.setScene(curMenu.getScene());
         primaryStage.show();
     }
