@@ -1,5 +1,6 @@
 package batchstockmanagement;
 
+import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -31,7 +32,6 @@ public abstract class Menu
     public Menu(MenuManager menuManager)
     {
         this.menuManager = menuManager;
-        
         windowPane = new BorderPane();
         contentPane = new GridPane();
         contentPane.setAlignment(Pos.CENTER);
@@ -71,6 +71,7 @@ public abstract class Menu
         header.getColumnConstraints().addAll(titleCol, nameCol, logoutCol);
         windowPane.setTop(header);
         scene = new Scene(windowPane, screenWidth, screenHeight);
+        
         initMenu();
     }
     
