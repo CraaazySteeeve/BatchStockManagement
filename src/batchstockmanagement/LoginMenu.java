@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -19,6 +20,7 @@ import javafx.scene.text.Text;
  */
 public class LoginMenu extends Menu 
 {
+    private GridPane loginContent; //Contains content.
     private final Login loginChecker;
     private TextField usernameInput;
     private PasswordField passwordInput;
@@ -34,20 +36,24 @@ public class LoginMenu extends Menu
     @Override
     public void initMenu()
     {
+        loginContent = new GridPane();
+        loginContent.setAlignment(Pos.CENTER);
+        loginContent.setHgap(10);
+        loginContent.setVgap(10);
         Text heading = new Text("Login");
-        getPane().add(heading, 0, 0, 2, 1);
+        loginContent.add(heading, 0, 0, 2, 1);
         
         //Username
         Label usernameLabel = new Label("Username: ");
-        getPane().add(usernameLabel, 0, 1);
+        loginContent.add(usernameLabel, 0, 1);
         usernameInput = new TextField();
-        getPane().add(usernameInput, 1, 1);
+        loginContent.add(usernameInput, 1, 1);
         
         //Password
         Label passwordLabel = new Label("Password: ");
-        getPane().add(passwordLabel, 0, 2);
+        loginContent.add(passwordLabel, 0, 2);
         passwordInput = new PasswordField();
-        getPane().add(passwordInput, 1, 2);
+        loginContent.add(passwordInput, 1, 2);
         
         //Submit Button
         loginSubmit = new Button("Login");
@@ -82,10 +88,10 @@ public class LoginMenu extends Menu
         HBox btnBox = new HBox(10);
         btnBox.getChildren().add(loginSubmit);
         btnBox.setAlignment(Pos.CENTER_RIGHT);
-        getPane().add(btnBox, 0, 3, 2, 1);
+        loginContent.add(btnBox, 0, 3, 2, 1);
         
         //Allows Enter to submit the form.
-        getPane().setOnKeyPressed(new EventHandler<KeyEvent>() 
+        loginContent.setOnKeyPressed(new EventHandler<KeyEvent>() 
         {
             @Override
             public void handle(KeyEvent keyEvent) 
@@ -99,7 +105,9 @@ public class LoginMenu extends Menu
         
         //Login Falure Text.
         loginFailure = new Text();
-        getPane().add(loginFailure, 1, 4);
+        loginContent.add(loginFailure, 1, 4);
+        loginContent.setStyle("border-size:2");
+        getPane().add(loginContent, 0, 0);
     }
     
     @Override
