@@ -37,10 +37,11 @@ public class LoginMenu extends Menu
     public void initMenu()
     {
         loginContent = new GridPane();
-        loginContent.setAlignment(Pos.CENTER);
+        loginContent.getStyleClass().add("centredWindow");
         loginContent.setHgap(10);
         loginContent.setVgap(10);
         Text heading = new Text("Login");
+        heading.setId("loginTitle");
         loginContent.add(heading, 0, 0, 2, 1);
         
         //Username
@@ -98,6 +99,10 @@ public class LoginMenu extends Menu
             {
                 if(keyEvent.getCode() == KeyCode.ENTER)
                 {
+                    //TODO: REMOVE TEST DATA.
+                    usernameInput.setText("admin");
+                    passwordInput.setText("password");
+                    ///
                     loginSubmit.fire();
                 }
             }

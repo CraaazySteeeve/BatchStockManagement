@@ -41,12 +41,11 @@ public abstract class Menu
         
         //Initalise the header bar.
         header = new GridPane();
-        header.setPadding(new Insets(20,20,20,40));
-        header.setStyle("-fx-background-color: #336699;");
+        header.setId("header");
         //Add the header.
         Text heading = new Text(headingText);
         header.add(heading, 0, 0);
-        heading.setStyle("-fx-font-size: 20;");
+        heading.setId("heading");
         userName = new Text("J.Coombes-Hall");
         header.add(userName, 1, 0);
         logout = new Button("Logout");
@@ -71,6 +70,7 @@ public abstract class Menu
         header.getColumnConstraints().addAll(titleCol, nameCol, logoutCol);
         windowPane.setTop(header);
         scene = new Scene(windowPane, screenWidth, screenHeight);
+        scene.getStylesheets().add(getClass().getResource("stylesheet.css").toString());
         
         initMenu();
     }
